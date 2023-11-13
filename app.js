@@ -6,7 +6,16 @@ const flash = require("express-flash");
 
 const app = express();
 
-// const conn = require('./db/conn')
+const conn = require('./db/conn')
+
+//Importar as tabelas - Models
+const User = require('./models/User')
+const Publication = require('./models/Publication')
+const Like = require('./models/Like')
+const Comment = require('./models/Comment')
+
+//Importar as ROTAS - router
+const authRouters = require('./routes/authRouters')
 
 const hbs = exphbs.create({
   partialsDir: ['views/partials']
@@ -48,8 +57,18 @@ app.use((request, response, next)=>{
   next()
 })
 
+//USAR AS ROTAS
+// /nomeMiddle/nomeRota
+app.use('/', authRouters)
+
 app.get('/', (req, res) => {
   return res.render('home')
 })
 
-app.listen(3333)
+conn
+// .sync({force:true})
+.sync()
+.then(()=>{
+  app.listen(3333)
+})
+.catch((err)=>console.log(err))
