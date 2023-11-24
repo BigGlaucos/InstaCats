@@ -8,13 +8,13 @@
         <li class="nav-item">
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">
-            Login
+            Entrar
           </button>
           {{!-- <a class="nav-link active" aria-current="page" href="/login">Login</a> --}}
         </li>
         <li class="nav-item">
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#register">
-            Register
+            Registrar
           </button>
           {{!-- <a class="nav-link" href="/register" data-bs-toggle="modal" data-bs-target="#modalOpen">Register</a> --}}
         </li>
@@ -31,11 +31,16 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <form action="/login" method="get">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" class="form-control" name="email">
+          <label for="password">Senha</label>
+          <input type="password" id="password" class="form-control" name="password">
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <input type="submit" class="btn btn-primary" value="Entrar">
       </div>
     </div>
   </div>
@@ -50,11 +55,18 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+       <form action="/register" method="post">
+       <label for="email">E-mail</label>
+       <input type="email" id="email" class="form-control" name="email">
+       <label for="password">Senha</label>
+       <input type="password" id="password" class="form-control" name="password">
+        <label for="passwordConfirm">Confirmar Senha</label>
+        <input type="passwordConfirm" id="passwordConfirm" class="form-control" name="passwordConfirm">
+       </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      <input type="submit" class="btn btn-primary" value="Registrar">
       </div>
     </div>
   </div>

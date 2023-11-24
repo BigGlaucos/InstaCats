@@ -1,20 +1,17 @@
-const { DataTypes } = require("sequelize");
+const {DataTypes} = require('sequelize');
 
-const db = require("../db/conn");
+const User = require('./User')
 
-//Importar as tabelas para o relacionamento
-const User = require("./User");
-const Publication = require("./Publication");
+const Publication = require('./Publication')
 
-const Like = db.define("Like", {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
-});
+const db = require('../db/conn')
 
-User.belongsToMany(Publication, { through: "Like" });
-Publication.belongsToMany(User, { through: "Like" });
+const Like = db.define('Like',{});
+
+Like.belongsTo(User)
+Like.belongsTo(Publication)
+
+User.hasMany(Like)
+Publication.hasMany(Like)
 
 module.exports = Like;

@@ -15,7 +15,7 @@ const Like = require('./models/Like')
 const Comment = require('./models/Comment')
 
 //Importar as ROTAS - router
-const authRouters = require('./routes/authRouters')
+const authRouters = require('./routes/Router')
 
 const hbs = exphbs.create({
   partialsDir: ['views/partials']

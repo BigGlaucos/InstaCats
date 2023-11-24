@@ -1,1 +1,11 @@
 Este aquivo deve ser excluído assim que fizer o download do projeto
+
+
+1º fazer o diagrama - usuario, publicacao , likes , comentario
+
+
+like
+|-id:
+|-id_User
+|-id_publication
+|-Timestamp

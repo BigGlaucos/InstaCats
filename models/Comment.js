@@ -1,19 +1,23 @@
-const { DataTypes } = require("sequelize");
+const {DataTypes, STRING} = require('sequelize');
 
-const db = require("../db/conn");
+const User = require('./User')
 
-//Importar as tabelas para o relacionamento
-const User = require("./User");
-const Publication = require("./Publication");
+const Publication = require('./Publication')
 
-const Comment = db.define("Comment", {
-  comment: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
+const db = require('../db/conn')
+
+const Comment = db.define('Comment',{
+        Comment:{
+            type:DataTypes.STRING,
+            allowNull:false,
+            require:true
+        }
 });
 
-User.belongsToMany(Publication, { through: "Comment" });
-Publication.belongsToMany(User, { through: "Comment" });
+Comment.belongsTo(User)
+Comment.belongsTo(Publication)
+
+User.hasMany(Comment)
+Publication.hasMany(Comment)
 
 module.exports = Comment;
